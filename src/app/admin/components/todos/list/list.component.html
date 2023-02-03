@@ -1,0 +1,59 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="users">
+            <th mat-header-cell *matHeaderCellDef> Users </th>
+            <td mat-cell *matCellDef="let element"> {{element.users}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="departments">
+            <th mat-header-cell *matHeaderCellDef> Departments </th>
+            <td mat-cell *matCellDef="let element"> {{element.departments}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="endtime">
+            <th mat-header-cell *matHeaderCellDef> EndTime </th>
+            <td mat-cell *matCellDef="let element"> {{element.endTime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdDate">
+            <th mat-header-cell *matHeaderCellDef> createdDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.created}} </td>
+        </ng-container>
+
+        <!-- 
+        <ng-container matColumnDef="updatedDate">
+            <th mat-header-cell *matHeaderCellDef> updatedDate </th>
+            <td mat-cell *matCellDef="let element"> {{element.updated}} </td>
+        </ng-container> -->
+
+        <ng-container matColumnDef="edit">
+            <th mat-header-cell *matHeaderCellDef width="30" height="25"></th>
+            <td mat-cell *matCellDef="let element"> <img
+                    src="../../../../../assets/1891025_circle_compose_draw_edit_write_icon.png"
+                    style="width: 30px; height: 30px;" /> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef width="30" height="25"></th>
+            <td [id]="element.id" mat-cell *matCellDef="let element" appDelete (callback)="getProducts()"></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator (page)="pageChanged()" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+        aria-label="Select page elements">
+    </mat-paginator>
+</div>

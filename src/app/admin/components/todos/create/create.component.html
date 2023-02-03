@@ -1,0 +1,36 @@
+<mat-form-field appearance="fill" class="product-create">
+    <mat-label>Name</mat-label>
+    <input matInput #nameText>
+</mat-form-field>
+<mat-form-field appearance="fill" class="product-create">
+    <mat-label>Description</mat-label>
+    <input matInput #descText>
+</mat-form-field>
+<mat-form-field appearance="fill" class="product-create">
+    <mat-label>Departments</mat-label>
+    <mat-select [formControl]="departments" multiple [(value)]="selectedDepartments">
+        <mat-option *ngFor="let department of departmentList" [value]="department">{{department}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill" class="product-create">
+    <mat-label>Users</mat-label>
+    <mat-select [formControl]="users" multiple [(value)]="selectedUsers">
+        <mat-option *ngFor="let user of usersList" [value]="user" #userSelect>{{user}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill" class="product-create">
+    <input matInput [matDatepicker]="picker" #dateSelect>
+    <mat-label>EndTime</mat-label>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<button type="button" class="btn btn-success"
+    (click)="create(nameText, descText, selectedDepartments, selectedUsers, dateSelect)">Create Todo</button>
+
+<!-- <button mat-button color="primary" class="product-create"
+    (click)="create(nameText, descText, selectedDepartments, selectedUsers, dateSelect)">Create Todo</button>
+
+
+<button mat-button color="warn">Warn</button> -->
